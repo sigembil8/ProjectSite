@@ -268,9 +268,9 @@
       if (fn) fn(el);
     });
   }
-  var LIVE = {
+  var LIVE = Object.assign({
     syncstatus: function (el) { fill(el, syncStatusNode()); }
-  };
+  }, KH.extraLive || {});
   KH.LIVE = LIVE;
 
   function syncStatusNode() {
@@ -850,7 +850,7 @@
     'tarik-persetujuan': screenWithdraw,
     'hapus-akun': screenDelete
   };
-  KH.SCREENS = SCREENS; // tahap berikutnya menambah layar di sini
+  Object.assign(SCREENS, KH.extraScreens || {}); // layar dari charts.js & content.js
 
   var PUBLIC = ['selamat-datang', 'persetujuan', 'daftar', 'masuk', 'lupa', 'reset'];
   var NEEDS_CONSENT_OK = ['persetujuan', 'hapus-akun', 'masuk'];

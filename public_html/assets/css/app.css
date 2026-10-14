@@ -178,3 +178,24 @@ input[aria-invalid=true] { border-color: var(--warn); border-width: 3px; }
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { transition: none !important; animation: none !important; scroll-behavior: auto !important; }
 }
+
+/* ---------- Pohon Ketabahan ---------- */
+.tree-svg { display: block; width: 100%; height: auto; max-width: 400px; margin: 0 auto; }
+.leaf-new { transform-box: fill-box; transform-origin: center; animation: leaf-in .6s ease-out; }
+@keyframes leaf-in { from { opacity: 0; transform: scale(.5); } to { opacity: 1; transform: scale(1.4); } }
+.legend, .count-list { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 8px 16px; }
+.legend li, .count-list li { display: flex; align-items: center; gap: 6px; margin: 0; font-weight: 600; }
+.count-list { flex-direction: column; }
+
+/* ---------- Grafik 4 minggu ---------- */
+.weeks { display: flex; flex-direction: column; gap: 12px; }
+.week { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 12px 8px; }
+.week h3 { font-size: 1.05rem; margin: 0 4px 8px; }
+.week .range { font-weight: 400; color: var(--ink-soft); }
+.week-row { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(7, 1fr); gap: 2px; }
+.day { display: flex; flex-direction: column; align-items: center; gap: 2px; margin: 0 !important; padding: 4px 0; border-radius: 10px; min-height: 84px; }
+.day.today { background: #E6F0EE; outline: 2px solid var(--primary); }
+.day.future { opacity: .45; }
+.dname { font-size: .85rem; font-weight: 700; color: var(--ink-soft); }
+.dicon { height: 34px; display: flex; align-items: center; }
+.rest-mark { font-weight: 800; color: var(--primary); min-height: 1.3em; font-size: 1.05rem; }
