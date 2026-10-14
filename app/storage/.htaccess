@@ -1,0 +1,2 @@
+# Cadangan bila folder app/ terpaksa berada di dalam public_html: tolak semua akses web.
+Require all denied
