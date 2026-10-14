@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-label="Logo (placeholder)">
+  <!-- PLACEHOLDER: ganti file ini dengan logo resmi (SVG, persegi). -->
+  <circle cx="60" cy="60" r="56" fill="#F5E8D3" stroke="#1E5B57" stroke-width="4" stroke-dasharray="10 6"/>
+  <path d="M60 88s-22-12.6-22-28.6A12.5 12.5 0 0 1 60 51a12.5 12.5 0 0 1 22 8.4C82 75.4 60 88 60 88z" fill="#1E5B57"/>
+  <text x="60" y="40" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#1E5B57">LOGO</text>
+</svg>
