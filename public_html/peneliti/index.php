@@ -8,7 +8,8 @@ declare(strict_types=1);
  * - Login: nama pengguna + sandi + kode TOTP, dibatasi percobaan, sesi 30 menit.
  */
 
-$appDir = getenv('KH_APP_DIR') ?: __DIR__ . '/../../app';
+// Private folder (code + config.php + keys.php), found by ../kh-private-path.php
+$appDir = require __DIR__ . '/../kh-private-path.php';
 require $appDir . '/bootstrap.php';
 
 kh_security_headers('html');
@@ -17,7 +18,7 @@ kh_require_https();
 session_name('kh_r');
 session_set_cookie_params([
     'lifetime' => 0,
-    'path'     => '/peneliti/',
+    'path'     => rtrim(dirname($_SERVER['SCRIPT_NAME'] ?? '/peneliti/index.php'), '/') . '/',
     'secure'   => true,
     'httponly' => true,
     'samesite' => 'Strict',
@@ -226,7 +227,7 @@ function r_head(string $title): void
     echo '<!doctype html><html lang="id"><head><meta charset="utf-8">',
          '<meta name="viewport" content="width=device-width, initial-scale=1">',
          '<meta name="robots" content="noindex, nofollow">',
-         '<title>', e($title), '</title><link rel="stylesheet" href="peneliti.css"></head><body>';
+         '<title>', e($title), '</title><link rel="icon" href="../assets/img/logo.svg"><link rel="stylesheet" href="peneliti.css"></head><body>';
 }
 
 function r_page_login(?string $error): void

@@ -18,6 +18,12 @@ define('KH_APP_DIR', __DIR__);
         exit(1);
     }
     $GLOBALS['KH_CONFIG'] = require $file;
+    // Encryption keys live in their own file next to config.php (created by setup.php or
+    // scripts/gen_keys.php --write). Keys in config.php are only used if keys.php is absent.
+    $keys = __DIR__ . '/keys.php';
+    if (is_file($keys)) {
+        $GLOBALS['KH_CONFIG']['keys'] = require $keys;
+    }
 })();
 
 /** Ambil nilai konfigurasi dengan jalur bertitik, mis. kh_cfg('mail.host'). */

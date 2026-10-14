@@ -1,29 +1,34 @@
-# KELUARGA HEBAT — Apache (cPanel)
+# KELUARGA HEBAT — Apache / LiteSpeed (cPanel). Works at the root of a (sub)domain.
+# No domain name in this file: the base URL is only 'app_url' in the private config.php.
 Options -Indexes
 DirectoryIndex index.html index.php
 
 <IfModule mod_rewrite.c>
   RewriteEngine On
-  # Paksa HTTPS
+  # Let cPanel AutoSSL / Let's Encrypt validate the certificate (must stay reachable over HTTP).
+  RewriteRule ^\.well-known/ - [L]
+  # Force HTTPS
   RewriteCond %{HTTPS} !=on
   RewriteCond %{HTTP:X-Forwarded-Proto} !=https
   RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
-  # Tolak file tersembunyi (.git, .env, dll.)
+  # Block hidden files (.git, .env, .user.ini …)
   RewriteRule (^|/)\. - [F]
 </IfModule>
 
 <IfModule mod_headers.c>
-  Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains"
+  # TEST SITE: keep out of search engines (also see robots.txt and <meta name="robots">)
+  Header always set X-Robots-Tag "noindex, nofollow, noarchive"
+  Header always set Strict-Transport-Security "max-age=31536000"
   Header always set X-Content-Type-Options "nosniff"
   Header always set Referrer-Policy "no-referrer"
   Header always set X-Frame-Options "DENY"
   Header always set Cross-Origin-Opener-Policy "same-origin"
   Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(), payment=(), usb=()"
-  # CSP ketat: semua dari domain sendiri, tanpa skrip/gaya inline, tanpa CDN.
-  # (PHP API & dashboard mengirim CSP sendiri yang lebih ketat.)
-  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' blob:; connect-src 'self'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; manifest-src 'self'; worker-src 'self'" "expr=%{REQUEST_URI} !~ m#^/(api|peneliti)/#"
+  # Strict CSP: everything from this site only, no inline scripts/styles, no CDN.
+  # PHP pages (api/, peneliti/, setup.php) send an additional, stricter CSP; browsers apply both.
+  Header always set Content-Security-Policy "default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; media-src 'self' blob:; connect-src 'self'; font-src 'none'; object-src 'none'; base-uri 'none'; form-action 'self'; frame-ancestors 'none'; manifest-src 'self'; worker-src 'self'"
 
-  # Cache: service worker & HTML selalu dicek ulang; aset boleh disimpan lama.
+  # Cache: service worker, HTML, manifest and content JSON are always re-checked; assets 7 days.
   <FilesMatch "^(sw\.js|index\.html|manifest\.webmanifest)$">
     Header set Cache-Control "no-cache"
   </FilesMatch>
@@ -39,6 +44,7 @@ AddType application/manifest+json .webmanifest
 AddType audio/mp4 .m4a
 AddType audio/ogg .ogg .opus
 
+# Compression (LiteSpeed also compresses on its own)
 <IfModule mod_deflate.c>
-  AddOutputFilterByType DEFLATE text/html text/css application/javascript text/javascript application/json application/manifest+json image/svg+xml
+  AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript text/javascript application/json application/manifest+json image/svg+xml
 </IfModule>

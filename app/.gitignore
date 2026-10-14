@@ -1,3 +1,4 @@
 config.php
+keys.php
 storage/*
 !storage/.htaccess

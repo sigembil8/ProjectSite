@@ -6,6 +6,7 @@ function kh_security_headers(string $kind = 'api'): void
 {
     header('X-Content-Type-Options: nosniff');
     header('Referrer-Policy: no-referrer');
+    header('X-Robots-Tag: noindex, nofollow, noarchive');
     header('X-Frame-Options: DENY');
     header('Cross-Origin-Opener-Policy: same-origin');
     header('Cross-Origin-Resource-Policy: same-origin');

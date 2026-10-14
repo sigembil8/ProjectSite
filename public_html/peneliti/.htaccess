@@ -1,4 +1,0 @@
-# Dashboard peneliti: jangan diindeks, jangan di-cache.
-<IfModule mod_headers.c>
-  Header always set X-Robots-Tag "noindex, nofollow"
-</IfModule>

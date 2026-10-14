@@ -8,7 +8,7 @@
  */
 importScripts('assets/js/core.js');
 
-var VERSION = 'kh-2026-10-14-2';
+var VERSION = 'kh-2026-10-14-3';
 var SHELL = 'shell-' + VERSION;
 var CONTENT = 'content-v1';
 var MEDIA = 'media-v1';
@@ -48,8 +48,8 @@ self.addEventListener('fetch', function (event) {
   if (url.origin !== self.location.origin) return;
   var path = url.pathname.slice(new URL(self.registration.scope).pathname.length);
 
-  // Jangan sentuh API dan dashboard peneliti.
-  if (path.indexOf('api/') === 0 || path.indexOf('peneliti/') === 0) return;
+  // Jangan sentuh API, dashboard peneliti, dan halaman PHP lain (mis. setup.php).
+  if (path.indexOf('api/') === 0 || path.indexOf('peneliti/') === 0 || /\.php$/.test(path)) return;
 
   if (req.mode === 'navigate') {
     event.respondWith(caches.match('index.html', { cacheName: SHELL }).then(function (hit) {

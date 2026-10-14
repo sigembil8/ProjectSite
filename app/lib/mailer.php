@@ -36,6 +36,7 @@ function kh_mail_send(string $to, string $subject, string $body): bool
         kh_smtp_send($cfg, $fromEmail, $to, $message);
         return true;
     } catch (Throwable $e) {
+        $GLOBALS['KH_MAIL_ERROR'] = $e->getMessage(); // shown on the setup page's test-email check
         error_log('KH mail error: ' . $e->getMessage());
         return false;
     }

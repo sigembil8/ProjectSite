@@ -33,13 +33,19 @@ return [
     // null = pakai 'db' di atas.
     'db_research' => null,
 
-    // Kunci rahasia (base64, 32 byte). Buat dengan: php scripts/gen_keys.php
+    // Kunci enkripsi: disimpan di file terpisah keys.php (di folder yang sama dengan config.php),
+    // dibuat sekali oleh setup.php atau `php scripts/gen_keys.php --write`.
+    // Bagian 'keys' di bawah hanya dipakai jika keys.php tidak ada.
     // JANGAN diganti setelah ada pengguna: email & rahasia TOTP tidak bisa dibaca lagi.
     'keys' => [
         'email_enc'   => 'GANTI',  // enkripsi email (libsodium secretbox)
         'email_index' => 'GANTI',  // HMAC indeks buta untuk mencari email saat login
         'app_secret'  => 'GANTI',  // enkripsi rahasia TOTP peneliti, dll.
     ],
+
+    // Kata sandi sementara untuk halaman setup sekali-pakai (setup.php). Minimal 16 karakter.
+    // Kosongkan ('') setelah setup selesai, lalu hapus setup.php dari server.
+    'setup_token' => '',
 
     // Lama HP tetap masuk (hari). Chrome membatasi cookie maksimal 400 hari.
     'session_days' => 365,

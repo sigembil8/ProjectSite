@@ -24,6 +24,7 @@ app/                       ← PRIVATE: upload OUTSIDE public_html (e.g. /home/U
   bootstrap.php            loads config + libraries
   api.php                  all JSON API routes
   config.example.php       copy to config.php and fill in
+  keys.php                 encryption keys (created by setup.php or gen_keys.php --write; not in Git)
   lib/                     db, http (headers, CSRF), crypto, auth, rate limit, mailer (SMTP), TOTP, validation
   sql/schema.sql           tables + researcher views
   scripts/
@@ -38,6 +39,8 @@ app/                       ← PRIVATE: upload OUTSIDE public_html (e.g. /home/U
 
 public_html/               ← PUBLIC web root
   index.html               app shell
+  kh-private-path.php      finds the private folder (env KH_APP_DIR → ../../keluarga-private → ../app)
+  setup.php                one-time browser setup page (delete after use)
   sw.js                    service worker
   manifest.webmanifest
   .htaccess                HTTPS redirect, strict CSP, security + cache headers
@@ -57,6 +60,9 @@ docs/TEST_CHECKLIST.md     QA checklist (Lighthouse, page weight, offline, 360 p
 
 ## 3. Deploying to cPanel, step by step
 
+> **Browser-only deployment to the Rumahweb TEST server** (File Manager + phpMyAdmin + one-time `setup.php`): see [`docs/DEPLOY_RUMAHWEB.md`](docs/DEPLOY_RUMAHWEB.md). The upload zip is built with `python3 deploy/build_zip.py`.
+
+
 > In the examples below, `USER` is your cPanel username and `keluargahebat.example.id` is your domain.
 
 ### 3.1 Database
@@ -70,7 +76,7 @@ docs/TEST_CHECKLIST.md     QA checklist (Lighthouse, page weight, offline, 360 p
 ### 3.2 Upload the files
 1. Upload `app/` to `/home/USER/app`, **next to** `public_html`, not inside it.
 2. Upload the **contents** of `public_html/` to `/home/USER/public_html/`. Make sure the hidden `.htaccess` files are included: in File Manager, open **Settings → Show Hidden Files**.
-3. If your layout is different (an addon domain or subdomain document root), either keep `app/` two levels above `api/index.php`, or set the environment variable `KH_APP_DIR` (for example in `.htaccess`: `SetEnv KH_APP_DIR /home/USER/app`).
+3. `public_html/kh-private-path.php` finds the private folder in this order: the environment variable `KH_APP_DIR`, then `<two levels above the web root>/keluarga-private` (e.g. `/home/USER/keluarga-private` for a web root `/home/USER/public_html/<sub>`), then `../app` next to the web root (repository layout).
 
 ### 3.3 Configure
 ```bash
