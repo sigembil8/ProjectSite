@@ -115,7 +115,7 @@ input[aria-invalid=true] { border-color: var(--warn); border-width: 3px; }
 .pw-row { display: flex; gap: 8px; }
 .pw-row input { flex: 1; min-width: 0; }
 .pin-input { text-align: center; font-size: 2rem !important; letter-spacing: .6em; max-width: 240px; margin: 0 auto; }
-.check-row { display: flex; gap: 12px; align-items: flex-start; text-align: left; padding: 6px 0; }
+.check-row { min-height: var(--tap); display: flex; gap: 12px; align-items: flex-start; text-align: left; padding: 6px 0; }
 .check-row label { font-weight: 600; padding-top: 6px; }
 .big-check { width: 36px; height: 36px; flex: none; margin: 4px; accent-color: var(--primary); }
 .form-msg { font-weight: 700; color: var(--ink); }

@@ -8,7 +8,7 @@
  */
 importScripts('assets/js/core.js');
 
-var VERSION = 'kh-2026-10-14-1';
+var VERSION = 'kh-2026-10-14-2';
 var SHELL = 'shell-' + VERSION;
 var CONTENT = 'content-v1';
 var MEDIA = 'media-v1';
