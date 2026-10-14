@@ -1,1 +1,63 @@
-{"version":"x","items":[]}
+{
+  "version": "2026-10-14",
+  "note": "Kartu belajar. 'body' berisi paragraf (string) atau {\"type\":\"list\",\"items\":[...]}. Isi hanya tampil jika 'reviewed' true. 'audio' dan 'image' opsional, dimuat hanya saat diketuk / mode hemat.",
+  "items": [
+    {
+      "id": "cara-pakai",
+      "icon": "info",
+      "title": "Cara memakai aplikasi ini",
+      "summary": "Panduan singkat aplikasi",
+      "reviewed": true,
+      "reviewed_by": "Tim aplikasi (panduan teknis, bukan nasihat)",
+      "reviewed_at": "2026-10-14",
+      "body": [
+        "Setiap hari, buka menu Catat Emosi dan pilih cuaca hatimu: Cerah, Berawan, Gerimis, atau Badai.",
+        "Lalu jawab satu pertanyaan dengan Ya atau Belum. Selesai.",
+        {"type": "list", "items": [
+          "Catatan tetap tersimpan walau tidak ada internet.",
+          "Catatan bisa diubah sampai tengah malam.",
+          "Pohon Ketabahan menunjukkan 7 hari terakhir.",
+          "Grafik Kemajuanku menunjukkan 4 minggu terakhir."
+        ]}
+      ],
+      "image": { "src": "content/img/contoh-panduan.svg", "alt": "Gambar contoh: empat pilihan cuaca hati", "size_kb": 1, "width": 320, "height": 160 },
+      "audio": { "src": "content/audio/contoh-panduan.wav", "duration_label": "2 detik, CONTOH", "size_kb": 16 }
+    },
+    {
+      "id": "hak-anak",
+      "icon": "rumah",
+      "title": "Mengenal hak anak disabilitas",
+      "summary": "Contoh judul",
+      "reviewed": false,
+      "body": [],
+      "audio": null
+    },
+    {
+      "id": "rawat-diri",
+      "icon": "hati",
+      "title": "Merawat diri sebagai orang tua",
+      "summary": "Contoh judul",
+      "reviewed": false,
+      "body": [],
+      "audio": null
+    },
+    {
+      "id": "komunikasi",
+      "icon": "curhat",
+      "title": "Berkomunikasi dengan anak",
+      "summary": "Contoh judul",
+      "reviewed": false,
+      "body": [],
+      "audio": null
+    },
+    {
+      "id": "layanan",
+      "icon": "telepon",
+      "title": "Mencari layanan dukungan di sekitar",
+      "summary": "Contoh judul",
+      "reviewed": false,
+      "body": [],
+      "audio": null
+    }
+  ]
+}

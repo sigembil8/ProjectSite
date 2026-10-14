@@ -1,1 +1,47 @@
-{"version":"x","items":[]}
+{
+  "version": "2026-10-14",
+  "note": "Isi 'body' hanya ditampilkan jika 'reviewed' bernilai true. Sebelum itu aplikasi menampilkan placeholder 'Konten sedang ditinjau tenaga profesional'.",
+  "items": [
+    {
+      "id": "tantrum",
+      "icon": "tantrum",
+      "title": "Anak Tantrum",
+      "reviewed": false,
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "body": [],
+      "audio": null
+    },
+    {
+      "id": "motorik",
+      "icon": "motorik",
+      "title": "Melatih Motorik Anak",
+      "reviewed": false,
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "body": [],
+      "audio": null
+    },
+    {
+      "id": "kejang",
+      "icon": "kejang",
+      "title": "Anak Kejang/Kaku",
+      "emergency": true,
+      "reviewed": false,
+      "reviewed_by": null,
+      "reviewed_at": null,
+      "body": [],
+      "audio": null
+    },
+    {
+      "id": "curhat",
+      "icon": "curhat",
+      "title": "Teman Curhat",
+      "type": "whatsapp",
+      "body": [
+        "Ingin berbagi cerita dengan sesama orang tua? Kamu bisa bergabung ke grup WhatsApp pendamping.",
+        "[CONTOH] Aturan grup dan nama pendamping akan dicantumkan di sini."
+      ]
+    }
+  ]
+}

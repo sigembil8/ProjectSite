@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 160" width="320" height="160">
+  <!-- CONTOH gambar konten. Ganti dengan ilustrasi resmi (SVG/WebP kecil). -->
+  <rect width="320" height="160" rx="16" fill="#F5E8D3"/>
+  <g transform="translate(20 40)"><circle cx="30" cy="30" r="16" fill="#F6C453" stroke="#6B4A0E" stroke-width="3"/></g>
+  <g transform="translate(95 40)"><path d="M10 50h40a14 14 0 0 0 1.8-27.9A20 20 0 0 0 12.6 24.8 15.6 15.6 0 0 0 10 50z" fill="#CBD5DE" stroke="#3F4D59" stroke-width="3"/></g>
+  <g transform="translate(170 30)"><path d="M10 50h40a14 14 0 0 0 1.8-27.9A20 20 0 0 0 12.6 24.8 15.6 15.6 0 0 0 10 50z" fill="#9CC5DE" stroke="#23506B" stroke-width="3"/><path d="M20 58l-3 8M32 58l-3 8M44 58l-3 8" stroke="#23506B" stroke-width="3" stroke-linecap="round"/></g>
+  <g transform="translate(245 30)"><path d="M10 50h40a14 14 0 0 0 1.8-27.9A20 20 0 0 0 12.6 24.8 15.6 15.6 0 0 0 10 50z" fill="#C9BEE6" stroke="#463A73" stroke-width="3"/><path d="M33 52l-7 11h7l-4 11 12-15h-7l4-7z" fill="#F7DC8A" stroke="#463A73" stroke-width="2"/></g>
+  <text x="160" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="700" fill="#2A211B">CONTOH GAMBAR</text>
+</svg>
